@@ -5,6 +5,16 @@ using UnityEngine;
 public class DJ_CustomerMovement : MonoBehaviour
 {
     public Vector2 TargetPosition { get; set; }
+    public int QueuePosition { get; set; }
+    public Vector2 EndOfQueue { get; set; }
+
+    public delegate void AtPosition();
+    public event AtPosition InPosition;
+
+    void Start()
+    {
+        QueuePosition = 4;
+    }
 
     void Update()
     {
@@ -30,6 +40,10 @@ public class DJ_CustomerMovement : MonoBehaviour
 
     IEnumerator Queueing()
     {
+        if ((Vector2)transform.position == EndOfQueue && InPosition != null)
+        {
+            InPosition();
+        }
         yield return null;
     }
 
@@ -40,6 +54,7 @@ public class DJ_CustomerMovement : MonoBehaviour
 
     IEnumerator Leaving()
     {
+        TargetPosition = new Vector2(20, Random.Range(-20, 20));
         yield return null;
     }
 }
