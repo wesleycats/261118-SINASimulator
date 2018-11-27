@@ -38,6 +38,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
+<<<<<<< HEAD
     m_Name: Fire1
     descriptiveName: 
     descriptiveNegativeName: 
@@ -267,6 +268,13 @@ InputManager:
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: enter
+=======
+    m_Name: Use
+    descriptiveName: The use button in the game
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: e
+>>>>>>> Input
     altNegativeButton: 
     altPositiveButton: space
     gravity: 1000
@@ -277,6 +285,7 @@ InputManager:
     type: 0
     axis: 0
     joyNum: 0
+<<<<<<< HEAD
   - serializedVersion: 3
     m_Name: Cancel
     descriptiveName: 
@@ -293,3 +302,5 @@ InputManager:
     type: 0
     axis: 0
     joyNum: 0
+=======
+>>>>>>> Input
