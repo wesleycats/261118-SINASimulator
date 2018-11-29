@@ -5,43 +5,44 @@ using UnityEngine;
 public class JP_Interact : MonoBehaviour {
 
     private PlayerInput playerInput;
-    private Rigidbody2D rigidbody2D;
     private BoxCollider2D boxCollider2D;
 
-    public Vector2 direction;
+    private ContactFilter2D filter;
+    private float distance;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         /*
         playerInput = GetComponent<PlayerInput>();
         playerInput.OnInput += Interact;
         */
 
-        rigidbody2D = GetComponent<Rigidbody2D>();
         boxCollider2D = GetComponent<BoxCollider2D>();
 
+        distance = .5f;
 
-        rigidbody2D.velocity = new Vector2(0, -1);
+        filter = new ContactFilter2D
+        {
+            useLayerMask = true
+        };
+
+        filter.SetLayerMask(LayerMask.GetMask("Interactable"));
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+        /* // INPUT
         if (!Input.GetKeyDown(KeyCode.E)) return; 
         Interact(InputActions.Use, 0);
+        */
     }
 
     public void Interact(InputActions action, float axis)
     {
         if (action != InputActions.Use) return;
 
-        float distance = .5F;
-
         RaycastHit2D[] raycastHits = new RaycastHit2D[10];
-
-        ContactFilter2D filter = new ContactFilter2D()
-        {
-
-        };
 
         int numHits = boxCollider2D.Cast(new Vector2(-1, 0), filter, raycastHits, distance);
 
@@ -67,13 +68,11 @@ public class JP_Interact : MonoBehaviour {
             }
         }
 
-        if (closestGameObject == null)
+        if (closestGameObject != null)
         {
-            Debug.Log("No object");
-        }
-        else
-        {
-            Debug.Log(closestGameObject.name);
+            //Debug.Log(closestGameObject.name);
+
+            closestGameObject.GetComponent<JP_Interactable>().Use();
         }
     }
 
