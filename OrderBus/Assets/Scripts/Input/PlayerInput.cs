@@ -5,13 +5,13 @@ using System;
 
 public class PlayerInput : MonoBehaviour {
 
-	public Action<InputActions,float> OnInput;
+	public Action<InputActions, float> OnInput;
 	
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetButton("Use"))
 		{
-			SendInput(InputActions.Use,0);
+			SendInput(InputActions.Use, 0);
 		}
 
 		if (Input.GetButtonDown("Horizontal"))
