@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ItemType {coffee, thea, blanket, none}
-public class Item : MonoBehaviour {
+public enum ItemType {coffee, thea, choco, sandwhich, cookie, pie, blanket, diaper, poncho, none}
+public class Item {
 
 	private ItemType item;
 
@@ -11,6 +11,6 @@ public class Item : MonoBehaviour {
 		item = itemType;
 	}
 
-	public ItemType GetItem{ get { return item; } set { item = value; } }
+	public ItemType GetItem{ get { return item; } }
 	
 }
