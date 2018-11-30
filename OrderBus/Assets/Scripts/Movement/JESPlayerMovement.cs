@@ -28,7 +28,6 @@ public class JESPlayerMovement : MonoBehaviour {
 
 	private void Update()
 	{
-		Debug.Log(movement);
 		movement *= friction * speed * Time.deltaTime;
 		this.transform.position += movement;
 	}
