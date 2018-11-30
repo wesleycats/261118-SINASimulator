@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DJ_CustomerMovement : MonoBehaviour
+public class dj_CustomerMovement : MonoBehaviour
 {
     public Vector2 TargetPosition { get; set; }
     public int QueuePosition { get; set; }
     public Vector2 EndOfQueue { get; set; }
+
+    [Header("The movement speed of the customer")]
+    [SerializeField] [Range(1, 10)] private float movementSpeed = 3;
 
     public delegate void AtPosition();
     public event AtPosition InPosition;
@@ -18,7 +21,7 @@ public class DJ_CustomerMovement : MonoBehaviour
 
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, TargetPosition, 0.002f);
+        transform.position = Vector3.MoveTowards(transform.position, TargetPosition, 0.001f * movementSpeed);
     }
 
     public void Execute(CustomerStates state)
@@ -40,7 +43,7 @@ public class DJ_CustomerMovement : MonoBehaviour
 
     IEnumerator Queueing()
     {
-        if ((Vector2)transform.position == EndOfQueue && InPosition != null)
+        if (QueuePosition == 0 && Vector3.Distance((Vector2)transform.position, EndOfQueue) < 0.02 && InPosition != null)
         {
             InPosition();
         }
