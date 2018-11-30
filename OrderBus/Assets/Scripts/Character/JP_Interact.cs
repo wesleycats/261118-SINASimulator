@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class JP_Interact : MonoBehaviour {
 
-    private PlayerInput playerInput;
+    //private PlayerInput playerInput;
     private BoxCollider2D boxCollider2D;
 
     private ContactFilter2D filter;

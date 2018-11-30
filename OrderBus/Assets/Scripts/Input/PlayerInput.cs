@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class PlayerInput : MonoBehaviour {
-
+public class PlayerInput : MonoBehaviour
+{
+	/*
 	public Action<InputActions, float> OnInput;
 	
 	// Update is called once per frame
@@ -48,3 +49,5 @@ public class PlayerInput : MonoBehaviour {
 	}
 }
 public enum InputActions { Left, Up, Right, Down, Use };
+*/
+}
