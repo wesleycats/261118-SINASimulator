@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class JP_Interact : MonoBehaviour {
 
-    //private PlayerInput playerInput;
+	[SerializeField] JESPlayerInput inputScript;
     private BoxCollider2D boxCollider2D;
 
     private ContactFilter2D filter;
@@ -12,11 +12,6 @@ public class JP_Interact : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        /*
-        playerInput = GetComponent<PlayerInput>();
-        playerInput.OnInput += Interact;
-        */
-
         boxCollider2D = GetComponent<BoxCollider2D>();
 
         distance = .5f;
@@ -27,16 +22,8 @@ public class JP_Interact : MonoBehaviour {
         };
 
         filter.SetLayerMask(LayerMask.GetMask("Interactable"));
+		inputScript.OnInput += Interact;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-
-        /* // INPUT
-        if (!Input.GetKeyDown(KeyCode.E)) return; 
-        Interact(InputActions.Use, 0);
-        */
-    }
 
     public void Interact(InputActions action, float axis)
     {
@@ -70,8 +57,6 @@ public class JP_Interact : MonoBehaviour {
 
         if (closestGameObject != null)
         {
-            //Debug.Log(closestGameObject.name);
-
             closestGameObject.GetComponent<JP_Interactable>().Use();
         }
     }
