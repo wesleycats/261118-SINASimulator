@@ -2,32 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DJ_QueueTakeOut : MonoBehaviour
+public class dj_QueueTakeOut : MonoBehaviour
 {
-    private DJ_Queue queue;
+    private dj_Queue queue;
     private GameObject customer;
-    DJ_Customer c;
-    DJ_CustomerMovement m;
+    dj_Customer c;
+    dj_CustomerMovement m;
+    dj_OrderDisplayer d;
 
     void Start()
     {
-        queue = GetComponent<DJ_Queue>();
+        queue = GetComponent<dj_Queue>();
+        d = GetComponent<dj_OrderDisplayer>();
         queue.NextCustomer += GetNextCustomer;
     }
 
     void GetNextCustomer()
-    {       
-
+    {
         customer = queue.GetCustomer();
-        c = customer.GetComponent<DJ_Customer>();
-        m = customer.GetComponent<DJ_CustomerMovement>();
+        if (c == null)
+        {
+            return;
+        }
+        c = customer.GetComponent<dj_Customer>();
+        m = customer.GetComponent<dj_CustomerMovement>();
         m.InPosition -= Order;
         m.InPosition += Order;
     }
 
     void Order()
     {
-        m.InPosition -= Order;
-        c.PlaceOrder();
+        d.ShowOrder(c);
     }
 }
