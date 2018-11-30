@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class DJ_Queue : MonoBehaviour
+public class dj_Queue : MonoBehaviour
 {
     public delegate void NewCustomer();
     public event NewCustomer NextCustomer;
@@ -17,11 +17,10 @@ public class DJ_Queue : MonoBehaviour
     [Header("On which side of the bus is the queue?")]
     [SerializeField] private Side side;
     [Header("Finetuner for the positions of the customers in the queue")]
-    [SerializeField] private float offset;
+    [SerializeField] private float offset = 0.2f;
     [Header("Maximum length of the queue")]
-    [SerializeField] private int maxLength;
-    [SerializeField] private List<GameObject> customers = new List<GameObject>();
-    [SerializeField] private List<GameObject> list = new List<GameObject>();
+    [SerializeField] private int maxLength = 5;
+    private List<GameObject> customers = new List<GameObject>();
 
     public GameObject GetCustomer()
     {
@@ -40,13 +39,17 @@ public class DJ_Queue : MonoBehaviour
 
     IEnumerator SetCustomerPositions()
     {
-        DJ_CustomerMovement m;
+        dj_CustomerMovement m;
         int l = customers.Count;
         for (int i = 0; i < l; i++)
         {
-            m = customers[i].GetComponent<DJ_CustomerMovement>();
+            m = customers[i].GetComponent<dj_CustomerMovement>();
             m.QueuePosition = i;
             m.TargetPosition = new Vector2((i + offset) * side.GetHashCode() * 0.2f, 0);
+        }
+        if (NextCustomer != null)
+        {
+            NextCustomer();
         }
         yield return null;
     }
@@ -56,8 +59,8 @@ public class DJ_Queue : MonoBehaviour
         GameObject o = other.gameObject;
         if (o.tag == "Customer" && !customers.Contains(o))
         {
-            DJ_Customer c = o.GetComponent<DJ_Customer>();
-            DJ_CustomerMovement m = o.GetComponent<DJ_CustomerMovement>();
+            dj_Customer c = o.GetComponent<dj_Customer>();
+            dj_CustomerMovement m = o.GetComponent<dj_CustomerMovement>();
             if (customers.Count < maxLength)
             {
                 c.Leaving += RemoveCustomer;
@@ -65,10 +68,6 @@ public class DJ_Queue : MonoBehaviour
                 m.EndOfQueue = new Vector2(offset * side.GetHashCode() * 0.2f, 0);
                 StartCoroutine("SetCustomerPositions");
                 c.SetState(CustomerStates.Queueing);
-                if (NextCustomer != null)
-                {
-                    NextCustomer();
-                }
             }
             else
             {             
