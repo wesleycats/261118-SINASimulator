@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Character_Temp1 : MonoBehaviour {
+public class Player : MonoBehaviour
+{
 
 	List<Item> equipedItems = new List<Item>();
 	bool test = false;
@@ -18,11 +19,15 @@ public class Character_Temp1 : MonoBehaviour {
 		DisplayItem(test);
 	}
 
-	void DisplayItem(bool display){
+	void DisplayItem(bool display)
+	{
 		GameObject coffee = this.gameObject.transform.GetChild(0).gameObject;
-		if(display == true){
-			for(int i = 0; i < equipedItems.Count; i++){
-				if(equipedItems[i].GetItem == ItemType.coffee){
+		if (display == true)
+		{
+			for (int i = 0; i < equipedItems.Count; i++)
+			{
+				if (equipedItems[i].GetItem == ItemType.coffee)
+				{
 					coffee.SetActive(true);
 				}
 			}
@@ -33,7 +38,8 @@ public class Character_Temp1 : MonoBehaviour {
 		}
 	}
 
-	public void Test(){
+	public void Test()
+	{
 		if (test == false)
 		{
 			test = true;

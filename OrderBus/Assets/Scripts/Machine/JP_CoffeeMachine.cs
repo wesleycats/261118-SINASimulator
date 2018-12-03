@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JP_CoffeeMachine : JP_Interactable {
+public class jp_CoffeeMachine : jp_Interactable {
 
     public override void Use()
     {
