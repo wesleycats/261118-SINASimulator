@@ -3,11 +3,10 @@ using UnityEngine;
 
 public class mr_TriggerWin : MonoBehaviour {
 
-    private Text winText;
+    [SerializeField] private Text winText;
 
     private void Start()
     {
-        winText = GameObject.FindObjectOfType<Text>();
         winText.enabled = false;
     }
 

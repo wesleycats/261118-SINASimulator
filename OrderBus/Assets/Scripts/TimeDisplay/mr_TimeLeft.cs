@@ -10,24 +10,21 @@ public class mr_TimeLeft : MonoBehaviour
     private bool isTimeUp = false;
 
     // Take juda's script to pass the timeProgress variable to
-    //private TimeDisplay timeDisplay;
+    private TimeDisplay timeDisplay;
 
-        private mr_TriggerWin winTrigger;
+    private mr_TriggerWin winTrigger;
 
     // Time in seconds
     private float timeLimit = 120f;
     private float timeLeft;
-    private float timeProgress = 100;
+    private float timeProgress = 0;
 
 
     private void Start()
     {
         // Find the scripts
-        //timeDisplay = GameObject.FindObjectOfType<TimeDisplay>();
+        timeDisplay = GameObject.FindObjectOfType<TimeDisplay>();
         winTrigger = GameObject.FindObjectOfType<mr_TriggerWin>();
-
-        // Log time and progress
-        //InvokeRepeating("TimeLogging", 0f, 1f);
 
         timeLeft = timeLimit;
     }
@@ -45,28 +42,20 @@ public class mr_TimeLeft : MonoBehaviour
             }
 
 
-            timeProgress -= Time.deltaTime * (100 / timeLimit);
+            timeProgress += Time.deltaTime * (100 / timeLimit);
 
             timeLeft -= Time.deltaTime;
 
             if (timeProgress > 0)
             {
                 // pass time progresstion
-                //timeDisplay.UpdateDisplay(timeProgress);
+                timeDisplay.UpdateDisplay(timeProgress);
 
             } else
             {
-                winTrigger.TriggerWin();
-                // Trigger Win Condition
+				// Trigger Win Condition
+				winTrigger.TriggerWin();
             }
         }
-
     }
-
-    void TimeLogging()
-    {
-        Debug.Log("Time left : " + Mathf.Floor(timeLeft) + " seconds");
-        Debug.Log("Progress : " + Mathf.Floor(timeProgress) + "%");
-    }
-
 }
