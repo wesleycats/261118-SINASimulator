@@ -21,10 +21,10 @@ GameObject:
   - component: {fileID: 4697567942941262}
   - component: {fileID: 212301911624942110}
   - component: {fileID: 58570066491533140}
-  - component: {fileID: 114595233909673096}
-  - component: {fileID: 114519925554715638}
+  - component: {fileID: 114985659459804134}
+  - component: {fileID: 114144365392556144}
   m_Layer: 0
-  m_Name: dj_Customer
+  m_Name: Customer
   m_TagString: Customer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,8 +37,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1571397608519906}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 21.55246, y: 4.965579, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalPosition: {x: -2.6296926, y: -0.343, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -52,13 +52,13 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
---- !u!114 &114519925554715638
+--- !u!114 &114144365392556144
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -69,8 +69,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9206ba22842b9d146892b3ae7009fa03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 3
---- !u!114 &114595233909673096
+  movementSpeed: 10
+--- !u!114 &114985659459804134
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
