@@ -10,7 +10,7 @@ public class Character_Temp1 : MonoBehaviour {
 
 	void Start()
 	{
-		equipedItems.Add(new Item(ItemType.coffee));
+		equipedItems.Add(new Item(ItemType.Coffee, 0));
 	}
 
 	void Update()
@@ -22,7 +22,7 @@ public class Character_Temp1 : MonoBehaviour {
 		GameObject coffee = this.gameObject.transform.GetChild(0).gameObject;
 		if(display == true){
 			for(int i = 0; i < equipedItems.Count; i++){
-				if(equipedItems[i].GetItem == ItemType.coffee){
+				if(equipedItems[i].GetItem == ItemType.Coffee){
 					coffee.SetActive(true);
 				}
 			}
