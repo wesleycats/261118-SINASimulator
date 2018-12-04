@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-
 	List<Item> equipedItems = new List<Item>();
 	bool test = false;
 

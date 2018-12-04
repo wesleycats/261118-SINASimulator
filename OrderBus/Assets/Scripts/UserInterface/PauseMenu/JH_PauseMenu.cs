@@ -5,9 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class JH_PauseMenu : MonoBehaviour {
 
-    [SerializeField]
-    private Scene _mainMenu;
+    [SerializeField] private Scene _mainMenu;
+	[SerializeField] private JESPlayerInput inputScript;
+
     private bool gamePaused = false;
+
+
     public GameObject pauseMenu;
 
 	// Update is called once per frame

@@ -1,7 +1,7 @@
 ﻿using UnityEngine.UI;
 using UnityEngine;
 
-public class mr_TriggerWin : MonoBehaviour {
+public class MR_TriggerWin : MonoBehaviour {
 
     [SerializeField] private Text winText;
 

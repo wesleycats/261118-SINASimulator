@@ -43,6 +43,14 @@ public class JESPlayerInput : MonoBehaviour {
 				SendInput(InputActions.Right, Input.GetAxis("Horizontal"));
 			}
 		}
+
+		if (Input.GetButton("Pause"))
+		{
+			if (Input.GetButton("Pause"))
+			{
+				SendInput(InputActions.Pause, Input.GetAxis("Pause"));
+			}
+		}
 	}
 
 	private void SendInput(InputActions inputActions, float axisNumber)
@@ -58,4 +66,4 @@ public class JESPlayerInput : MonoBehaviour {
 		Debug.Log("Input: " + inputActions + " Axis: " + axisNumber);
 	}
 }
-public enum InputActions { Left, Up, Right, Down, Use };
+public enum InputActions { Left, Up, Right, Down, Use, Pause };

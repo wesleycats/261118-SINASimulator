@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class dj_CustomerMovement : MonoBehaviour
+public class DJ_CustomerMovement : MonoBehaviour
 {
     public Vector2 TargetPosition { get; set; }
     public int QueuePosition { get; set; }

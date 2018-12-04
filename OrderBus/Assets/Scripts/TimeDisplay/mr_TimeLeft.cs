@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class mr_TimeLeft : MonoBehaviour
+public class MR_TimeLeft : MonoBehaviour
 {
 
 
@@ -12,7 +12,7 @@ public class mr_TimeLeft : MonoBehaviour
     // Take juda's script to pass the timeProgress variable to
     private TimeDisplay timeDisplay;
 
-    private mr_TriggerWin winTrigger;
+    private MR_TriggerWin winTrigger;
 
     // Time in seconds
     private float timeLimit = 120f;
@@ -24,7 +24,7 @@ public class mr_TimeLeft : MonoBehaviour
     {
         // Find the scripts
         timeDisplay = GameObject.FindObjectOfType<TimeDisplay>();
-        winTrigger = GameObject.FindObjectOfType<mr_TriggerWin>();
+        winTrigger = GameObject.FindObjectOfType<MR_TriggerWin>();
 
         timeLeft = timeLimit;
     }
