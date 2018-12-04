@@ -45,7 +45,7 @@ public class dj_Queue : MonoBehaviour
         {
             m = customers[i].GetComponent<dj_CustomerMovement>();
             m.QueuePosition = i;
-            m.TargetPosition = new Vector2((i + offset) * side.GetHashCode() * 0.2f, 0);
+            m.TargetPosition = new Vector2(transform.position.x - ((transform.localScale.x/4 - i * offset) * side.GetHashCode()), 0);
         }
         if (NextCustomer != null)
         {
@@ -65,13 +65,13 @@ public class dj_Queue : MonoBehaviour
             {
                 c.Leaving += RemoveCustomer;
                 customers.Add(o);
-                m.EndOfQueue = new Vector2(offset * side.GetHashCode() * 0.2f, 0);
+                m.EndOfQueue = new Vector2(transform.position.x - ((transform.localScale.x / 4) * side.GetHashCode()), 0);
                 StartCoroutine("SetCustomerPositions");
                 c.SetState(CustomerStates.Queueing);
             }
             else
             {             
-                m.TargetPosition = new Vector2((1.2f + offset) * side.GetHashCode(), 0);
+                m.TargetPosition = new Vector2(12f + (offset * side.GetHashCode()), 0);
                 m.StopAllCoroutines();
                 c.SetState(CustomerStates.Wandering);
             }
