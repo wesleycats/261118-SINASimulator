@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class dj_OrderDisplayer : MonoBehaviour
 {
-    private List<Sprite> itemList = new List<Sprite>();
     [Header("An array of sprite renderers for the order icons")]
     [SerializeField] private SpriteRenderer[] orders;
     [Header("The maximum amount of items a customer can order")]
     [SerializeField] private int maxItems;
+    [Header("Whether or not customer can request multiples of the same item")]
+    [SerializeField] private bool allowDuplicates;
+    private List<Item> itemList;
     private dj_Customer customer;
+
     // Use this for initialization
     void Start()
     {
-        for (int i = 0; i < maxItems; i++)
-        {
-            itemList.Add(Resources.Load<Sprite>("Item" + i));
-        }
+        itemList = dj_FakeMachine.ItemList;
     }
 
     public void ShowOrder(dj_Customer c)
@@ -25,11 +25,24 @@ public class dj_OrderDisplayer : MonoBehaviour
         c.Leaving += ClearOrder;
         int m = Random.Range(1, maxItems);
         int l = itemList.Count;
+        int t = 2 * m;
         for (int i = 0; i < m; i++)
         {
-            orders[i].sprite = itemList[Random.Range(0, l - 1)];
+            Item it = itemList[Random.Range(0, l)];
+            if (!allowDuplicates)
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    while (orders[j].sprite == Resources.Load<Sprite>(it.GetItem.ToString()))
+                    {
+                        it = itemList[Random.Range(0, l)];
+                    }
+                }
+            }
+            orders[i].sprite = Resources.Load<Sprite>(it.GetItem.ToString());
+            t += it.GetTime;
         }
-        c.WaitTime = m * 2 + 1;
+        c.WaitTime = t;
         c.PlaceOrder();
     }
 
