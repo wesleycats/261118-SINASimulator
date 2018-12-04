@@ -20,7 +20,7 @@ public class dj_QueueTakeOut : MonoBehaviour
     void GetNextCustomer()
     {
         customer = queue.GetCustomer();
-        if (c == null)
+        if (customer == null)
         {
             return;
         }
