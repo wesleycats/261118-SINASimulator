@@ -11,11 +11,11 @@ public enum CustomerStates
     Leaving
 }
 
-public class dj_Customer : MonoBehaviour
+public class DJ_Customer : MonoBehaviour
 {
     [Header("How long the customer will execute a movement action before starting the next")]
     [SerializeField] private float nextActionTimer;
-    private dj_CustomerMovement movement;
+    private DJ_CustomerMovement movement;
     private CustomerStates currentCustomerState = CustomerStates.Wandering;
 
     public int WaitTime { get; set; }
@@ -25,7 +25,7 @@ public class dj_Customer : MonoBehaviour
 
     void Start()
     {
-        movement = GetComponent<dj_CustomerMovement>();
+        movement = GetComponent<DJ_CustomerMovement>();
         StartCoroutine("NextAction");
     }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class dj_Queue : MonoBehaviour
+public class DJ_Queue : MonoBehaviour
 {
     public delegate void NewCustomer();
     public event NewCustomer NextCustomer;
@@ -39,11 +39,11 @@ public class dj_Queue : MonoBehaviour
 
     IEnumerator SetCustomerPositions()
     {
-        dj_CustomerMovement m;
+        DJ_CustomerMovement m;
         int l = customers.Count;
         for (int i = 0; i < l; i++)
         {
-            m = customers[i].GetComponent<dj_CustomerMovement>();
+            m = customers[i].GetComponent<DJ_CustomerMovement>();
             m.QueuePosition = i;
             m.TargetPosition = new Vector2((i + offset) * side.GetHashCode() * 0.2f, 0);
         }
@@ -59,8 +59,8 @@ public class dj_Queue : MonoBehaviour
         GameObject o = other.gameObject;
         if (o.tag == "Customer" && !customers.Contains(o))
         {
-            dj_Customer c = o.GetComponent<dj_Customer>();
-            dj_CustomerMovement m = o.GetComponent<dj_CustomerMovement>();
+            DJ_Customer c = o.GetComponent<DJ_Customer>();
+            DJ_CustomerMovement m = o.GetComponent<DJ_CustomerMovement>();
             if (customers.Count < maxLength)
             {
                 c.Leaving += RemoveCustomer;

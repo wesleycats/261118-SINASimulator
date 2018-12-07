@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class jp_CoffeeMachine : jp_Interactable {
+public class JP_CoffeeMachine : JP_Interactable {
+	[SerializeField]
+	private Item item;
 
-    public override void Use()
+    public override void Use(Player player)
     {
         Debug.Log("Je gebruikt de coffee machine");
+		player.SetEquipedItem(item,0);
     }
 
     // Use this for initialization

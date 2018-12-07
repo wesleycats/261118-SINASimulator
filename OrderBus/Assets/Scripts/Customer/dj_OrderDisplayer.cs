@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class dj_OrderDisplayer : MonoBehaviour
+public class DJ_OrderDisplayer : MonoBehaviour
 {
     private List<Sprite> itemList = new List<Sprite>();
     [Header("An array of sprite renderers for the order icons")]
     [SerializeField] private SpriteRenderer[] orders;
     [Header("The maximum amount of items a customer can order")]
     [SerializeField] private int maxItems;
-    private dj_Customer customer;
+    private DJ_Customer customer;
     // Use this for initialization
     void Start()
     {
@@ -19,7 +19,7 @@ public class dj_OrderDisplayer : MonoBehaviour
         }
     }
 
-    public void ShowOrder(dj_Customer c)
+    public void ShowOrder(DJ_Customer c)
     {
         customer = c;
         c.Leaving += ClearOrder;

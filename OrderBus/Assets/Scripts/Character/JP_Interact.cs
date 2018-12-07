@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class jp_Interact : MonoBehaviour {
+public class JP_Interact : MonoBehaviour {
 
 	[SerializeField] JESPlayerInput inputScript;
     private BoxCollider2D boxCollider2D;
@@ -57,7 +57,7 @@ public class jp_Interact : MonoBehaviour {
 
         if (closestGameObject != null)
         {
-            closestGameObject.GetComponent<jp_Interactable>().Use();
+            closestGameObject.GetComponent<JP_Interactable>().Use(this.GetComponent<Player>());
         }
     }
 
