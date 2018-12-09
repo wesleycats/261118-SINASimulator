@@ -4,18 +4,30 @@ using UnityEngine;
 
 public class JP_CoffeeMachine : JP_Interactable {
 
-    public override void Use()
-    {
-        Debug.Log("Je gebruikt de coffee machine");
-    }
+	public List<Item> items;
 
-    // Use this for initialization
-    void Start () {
-		
+	WorkstationManager wsManager;
+
+	private void Awake()
+	{
+		wsManager = FindObjectOfType<WorkstationManager>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	private void Start()
+	{
+		items = new List<Item>();
+
+		for (int i = 0; i < wsManager.coffeeMachine.Count; i++)
+		{
+			items.Add(new Item(wsManager.coffeeMachine[i]));
+		}
 	}
+
+	public override void Use(Player player)
+    {
+		player.SetEquipedItem(items[0],0);
+
+		// TODO
+		// FIX THAT items[0] becomes the item the player chose instead of hardcoded index 0
+    }
 }

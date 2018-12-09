@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class JP_Interactable : MonoBehaviour {
 
-    public abstract void Use();
+    public abstract void Use(Player player);
 }

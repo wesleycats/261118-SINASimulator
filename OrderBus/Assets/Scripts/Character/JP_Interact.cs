@@ -32,7 +32,6 @@ public class JP_Interact : MonoBehaviour {
         RaycastHit2D[] raycastHits = new RaycastHit2D[10];
 
         int numHits = boxCollider2D.Cast(new Vector2(-1, 0), filter, raycastHits, distance);
-
         numHits += boxCollider2D.Cast(new Vector2(1, 0), filter, raycastHits, distance);
         numHits += boxCollider2D.Cast(new Vector2(0, 1), filter, raycastHits, distance);
         numHits += boxCollider2D.Cast(new Vector2(0, -1), filter, raycastHits, distance);
@@ -57,7 +56,7 @@ public class JP_Interact : MonoBehaviour {
 
         if (closestGameObject != null)
         {
-            closestGameObject.GetComponent<JP_Interactable>().Use();
+            closestGameObject.GetComponent<JP_Interactable>().Use(this.GetComponent<Player>());
         }
     }
 }
