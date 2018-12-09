@@ -7,7 +7,7 @@ public class MR_TimeLeft : MonoBehaviour
 {
 	public GameObject winPanel;
 
-	// Time in seconds
+	[Tooltip("Time is in seconds")]
 	[SerializeField] private float timeLimit = 120f;
 	[SerializeField] private float timeLeft;
 

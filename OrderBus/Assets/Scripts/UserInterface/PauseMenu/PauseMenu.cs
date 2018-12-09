@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class JH_PauseMenu : MonoBehaviour {
+public class PauseMenu : MonoBehaviour {
 
-    [SerializeField] private Scene _mainMenu;
 	[SerializeField] private JESPlayerInput inputScript;
 
     private bool gamePaused = false;
-
 
     public GameObject pauseMenu;
 
@@ -17,28 +15,28 @@ public class JH_PauseMenu : MonoBehaviour {
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.Escape))
         {
-            if (gamePaused) Resume();
-            else Pause();
+            if (gamePaused) Resume(pauseMenu);
+            else Pause(pauseMenu);
         }
 	}
 
-    public void Resume()
+    public void Resume(GameObject menu)
     {
-        pauseMenu.SetActive(false);
+        menu.SetActive(false);
         Time.timeScale = 1f;
         gamePaused = false;
     }
 
-    void Pause()
+    void Pause(GameObject menu)
     {
-        pauseMenu.SetActive(true);
+        menu.SetActive(true);
         Time.timeScale = 0f;
         gamePaused = true;
     }
 
-    public void LoadMenu()
+    public void MainMenu()
     {
-        SceneManager.LoadScene(_mainMenu.name);
+        SceneManager.LoadScene(0);
     }
 
     public bool GetGamePaused() { return gamePaused; }
