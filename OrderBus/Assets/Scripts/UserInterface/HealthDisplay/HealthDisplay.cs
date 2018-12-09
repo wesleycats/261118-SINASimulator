@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class HealthDisplay : MonoBehaviour {
 
-    [SerializeField] private int lives;
+    private int lives;
     private int maxLives;
 
     private List<HealthObject> healthObjects = new List<HealthObject>();
 
+	public int Lives
+	{
+		get
+		{
+			return lives;
+		}
+	}
 
     void Start()
     {
