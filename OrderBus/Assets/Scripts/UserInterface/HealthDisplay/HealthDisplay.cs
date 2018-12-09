@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthDisplay : MonoBehaviour {
 
-    private int lives;
+    [SerializeField] private int lives;
     private int maxLives;
 
     private List<HealthObject> healthObjects = new List<HealthObject>();
