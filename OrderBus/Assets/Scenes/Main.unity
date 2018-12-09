@@ -364,7 +364,6 @@ GameObject:
   m_Component:
   - component: {fileID: 156034893}
   - component: {fileID: 156034892}
-  - component: {fileID: 156034891}
   - component: {fileID: 156034894}
   m_Layer: 0
   m_Name: UI Manager
@@ -373,18 +372,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &156034891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 156034890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82a944450c038424394b066707db847f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  winText: {fileID: 68638085}
 --- !u!114 &156034892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -396,6 +383,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e5fabb3b8e6724eafed2e493c73e10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  winPanel: {fileID: 68638083}
+  timeLimit: 10
+  timeLeft: 0
 --- !u!4 &156034893
 Transform:
   m_ObjectHideFlags: 0
@@ -665,7 +655,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 500, y: 120}
+  m_SizeDelta: {x: 550, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &515949829
 MonoBehaviour:
