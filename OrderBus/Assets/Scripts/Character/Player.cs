@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-	[SerializeField] private int itemLimit = 1;
-
 	public List<Item> equipedItems = new List<Item>();
 
 	private List<GameObject> items = new List<GameObject>();
