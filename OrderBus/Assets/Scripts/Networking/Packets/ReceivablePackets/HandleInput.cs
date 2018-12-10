@@ -13,6 +13,5 @@ public class HandleInput {
 
         InputActions action = (InputActions) actionId;
 
-       // UnityMainThreadDispatcher.Instance().Enqueue(() => WorldManager.instance.MoveObject(objectId, posX, posY, posZ, time));
     }
 }

@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class EnterServerRequest : SendablePacket {
 
-    public EnterServerRequest(string characterName)
+    public EnterServerRequest()
     {
         WriteShort(7); // Packet id.
-        WriteString(characterName);
     }
 }

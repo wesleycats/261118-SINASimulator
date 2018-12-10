@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class PlayerInformation {
 
-    public static void notify(ReceivablePacket packet) {
+    public static void Notify(ReceivablePacket packet) {
 
         long objectId = packet.ReadLong();
-        int classId = packet.ReadShort();
-        string playerName = packet.ReadString();
         float posX = packet.ReadFloat();
         float posY = packet.ReadFloat();
         float posZ = packet.ReadFloat();
@@ -16,6 +14,6 @@ public class PlayerInformation {
         Debug.Log("Player joined");
 
         //TODO: Manage PlayerInformation
-        UnityMainThreadDispatcher.Instance().Enqueue(() => WorldManager.instance.UpdateObject(objectId, classId, posX, posY, posZ));
+        //UnityMainThreadDispatcher.Instance().Enqueue(() => UnityEngine.XR.WSA.WorldManager.instance.UpdateObject(objectId, classId, posX, posY, posZ));
     }
 }

@@ -7,6 +7,9 @@ public class ReceivablePacketManager {
     public static void handle(ReceivablePacket packet) {
 
         switch (packet.ReadShort())  {
+            case 0:
+                PingPlayer.Notify(packet);
+                break;
             case 1:
                // AccountAuthenticationResult.notify(packet);
                 break;
@@ -24,15 +27,15 @@ public class ReceivablePacketManager {
                 break;
 
             case 5:
-                EnterServerInformation.notify(packet);
+                EnterServerInformation.Notify(packet);
                 break;
 
             case 6:
-                PlayerInformation.notify(packet);
+                PlayerInformation.Notify(packet);
                 break;
 
             case 7:
-                DeleteObject.notify(packet);
+                //DeleteObject.Notify(packet);
                 break;
 
             case 8:
@@ -40,7 +43,7 @@ public class ReceivablePacketManager {
                 break;
 
             case 9:
-                MoveToLocation.notify(packet);
+                MoveToLocation.Notify(packet);
                 break;
 
             case 10:

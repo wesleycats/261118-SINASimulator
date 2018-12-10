@@ -10,6 +10,6 @@ public class MoveToLocation {
         float posZ = packet.ReadFloat();
         float time = packet.ReadFloat();
 
-        UnityMainThreadDispatcher.Instance().Enqueue(() => WorldManager.instance.MoveObject(objectId, posX, posY, posZ, time));
+
     }
 }

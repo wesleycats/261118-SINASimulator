@@ -39,6 +39,8 @@ public class NetworkManager : MonoBehaviour
         bool connect = ConnectToServer();
 
         Debug.Log(connect);
+
+        ChannelSend(new EnterServerRequest());
     }
 
     private void Awake()

@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class EnterServerInformation {
 
-    public static void notify(ReceivablePacket packet)
+    public static void Notify(ReceivablePacket packet)
     {
-        // TODO: Read player information.
+
+        long objectId = packet.ReadLong();
+
+        Player.instance.objectId = objectId;
+
+        Debug.Log("objectId: " + objectId);
     }
 }

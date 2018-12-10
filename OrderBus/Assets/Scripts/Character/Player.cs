@@ -7,12 +7,17 @@ public class Player : MonoBehaviour
 {
 	[SerializeField] private int itemLimit = 1;
 
+    public static Player instance;
+
 	public List<Item> equipedItems = new List<Item>();
 
 	private List<GameObject> items = new List<GameObject>();
 	private PlayerInventory inventory;
 	private int equipItemIndex = 0;
 	private bool test = false;
+
+    [HideInInspector]
+    public long objectId;
 
 	public Item GetEquipedItem{
 		get {
@@ -22,7 +27,8 @@ public class Player : MonoBehaviour
 
 	private void Awake()
 	{
-		inventory = transform.GetChild(0).GetComponent<PlayerInventory>();
+        instance = this;
+        inventory = transform.GetChild(0).GetComponent<PlayerInventory>();
 	}
 
 	public void SetEquipedItem(Item item, int index)
