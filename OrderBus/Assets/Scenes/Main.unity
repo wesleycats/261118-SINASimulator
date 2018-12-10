@@ -226,6 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bb4bfd334431494f95fcbffec534ccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  workStationType: 0
 --- !u!1 &90592524
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,6 +1126,7 @@ MonoBehaviour:
   coffeeMachine: 000000000100000002000000
   kitchen: 030000000400000005000000
   trunk: 060000000700000008000000
+  trashCan: 
 --- !u!4 &876105261
 Transform:
   m_ObjectHideFlags: 0
@@ -2078,6 +2080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c373c12a2fcdbb489d26a37dcbf487b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movement: 0
 --- !u!4 &2030201799
 Transform:
   m_ObjectHideFlags: 0

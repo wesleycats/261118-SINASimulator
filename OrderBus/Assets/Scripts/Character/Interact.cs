@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JP_Interact : MonoBehaviour {
+public class Interact : MonoBehaviour {
 
-	[SerializeField] JESPlayerInput inputScript;
+	[SerializeField] InputManager inputScript;
     private BoxCollider2D boxCollider2D;
 
     private ContactFilter2D filter;
@@ -22,10 +22,10 @@ public class JP_Interact : MonoBehaviour {
         };
 
         filter.SetLayerMask(LayerMask.GetMask("Interactable"));
-		inputScript.OnInput += Interact;
+		inputScript.OnInput += Interaction;
 	}
 
-    public void Interact(InputActions action, float axis)
+    public void Interaction(InputActions action, float axis)
     {
         if (action != InputActions.Use) return;
 
@@ -56,7 +56,7 @@ public class JP_Interact : MonoBehaviour {
 
         if (closestGameObject != null)
         {
-            closestGameObject.GetComponent<JP_Interactable>().Use(this.GetComponent<Player>());
+            closestGameObject.GetComponent<Interactable>().Use(this.GetComponent<Player>());
         }
     }
 }

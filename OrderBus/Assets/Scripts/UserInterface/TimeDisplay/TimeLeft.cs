@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class MR_TimeLeft : MonoBehaviour
+public class TimeLeft : MonoBehaviour
 {
 	public GameObject winPanel;
 

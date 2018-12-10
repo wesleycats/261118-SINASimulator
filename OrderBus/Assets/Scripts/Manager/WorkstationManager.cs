@@ -8,4 +8,5 @@ public class WorkstationManager : MonoBehaviour {
 	public List<ItemType> coffeeMachine;
 	public List<ItemType> kitchen;
 	public List<ItemType> trunk;
+	public List<ItemType> trashCan;
 }

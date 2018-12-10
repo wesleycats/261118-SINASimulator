@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ItemType {coffee, thea, choco, sandwhich, cookie, pie, blanket, diaper, poncho, none}
+public enum ItemType {coffee, tea, choco, sandwich, cookie, pie, blanket, diaper, poncho, none}
 public class Item {
 
 	private ItemType item;

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour {
 
-	[SerializeField] private JESPlayerInput inputScript;
+	public InputManager inputScript;
 
     private bool gamePaused = false;
 

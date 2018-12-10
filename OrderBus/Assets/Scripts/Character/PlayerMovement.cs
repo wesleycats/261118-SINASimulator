@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JESPlayerMovement : MonoBehaviour {
+public class PlayerMovement : MonoBehaviour {
 
 	[SerializeField]
-	private JESPlayerInput playerInput;
+	private InputManager playerInput;
 	[SerializeField]
 	private float speed;
 	[SerializeField]
 	private float friction;
 	private Vector3 movement;
-	
+
 
 	private void Awake()
 	{

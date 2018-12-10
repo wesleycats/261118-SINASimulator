@@ -5,11 +5,14 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-	public List<Item> equipedItems = new List<Item>();
-	bool test = false;
-
 	[SerializeField] private int itemLimit = 1;
-	private int equipItemIndex;
+
+	public List<Item> equipedItems = new List<Item>();
+
+	private List<GameObject> items = new List<GameObject>();
+	private PlayerInventory inventory;
+	private int equipItemIndex = 0;
+	private bool test = false;
 
 	public Item GetEquipedItem{
 		get {
@@ -17,46 +20,19 @@ public class Player : MonoBehaviour
 		}		
 	}
 
-	public void SetEquipedItem(Item item, int value)
+	private void Awake()
 	{
-		equipedItems[value] = item;
-
-		if (equipedItems[0] == null)
-		{
-			DisplayItem(false);
-		}
-		else
-		{
-			DisplayItem(true);
-		}
+		inventory = transform.GetChild(0).GetComponent<PlayerInventory>();
 	}
 
-	void Start()
+	public void SetEquipedItem(Item item, int index)
 	{
-		equipedItems.Add(new Item(ItemType.coffee));
+		inventory.gameObject.SetActive(true);
+		inventory.SetEquipedItem(item, index);
 	}
 
-	void Update()
+	public void DisplayInventory(bool display)
 	{
-
-	}
-
-	void DisplayItem(bool display)
-	{
-		GameObject coffee = this.gameObject.transform.GetChild(0).gameObject;
-		if (display == true)
-		{
-			for (int i = 0; i < equipedItems.Count; i++)
-			{
-				if (equipedItems[i].GetItem == ItemType.coffee)
-				{
-					coffee.SetActive(true);
-				}
-			}
-		}
-		else
-		{
-			coffee.SetActive(false);
-		}
+		inventory.DisplayInventory(display);
 	}
 }
