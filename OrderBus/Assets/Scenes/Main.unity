@@ -898,7 +898,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8923626944d8bf7409cdd7df101eb390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemLimit: 1
 --- !u!1 &587089723
 GameObject:
   m_ObjectHideFlags: 0
@@ -1157,6 +1156,7 @@ GameObject:
   - component: {fileID: 844189811}
   - component: {fileID: 844189813}
   - component: {fileID: 844189814}
+  - component: {fileID: 844189815}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1213,6 +1213,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 524769c25d9914c47964f6499d332722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &844189815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 844189810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66826576f1539414ab20fec233469ec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentDay: 0
+  _workstationDay1: {fileID: 0}
+  _workstationDay2: {fileID: 0}
+  _workstationDay3: {fileID: 0}
+  _levelDifficulty: 0
+  _customersPerDay: 
 --- !u!224 &868938338 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224392221093430858, guid: 3b60b3ef8e32ae2459370b530dd83f59,
