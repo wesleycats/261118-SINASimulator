@@ -33,7 +33,10 @@ public class dj_Queue : MonoBehaviour
 
     void RemoveCustomer()
     {
-        customers.Remove(customers[0]);
+        if (customers.ElementAtOrDefault(0) != null)
+        {
+            customers.Remove(customers[0]);
+        }
         StartCoroutine("SetCustomerPositions");
     }
 
