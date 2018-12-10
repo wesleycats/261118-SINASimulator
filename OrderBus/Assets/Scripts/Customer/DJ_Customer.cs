@@ -16,7 +16,7 @@ public class dj_Customer : MonoBehaviour
     [Header("How long the customer will execute a movement action before starting the next")]
     [SerializeField] private float nextActionTimer;
     private dj_CustomerMovement movement;
-    private CustomerStates currentCustomerState = CustomerStates.Wandering;
+    [SerializeField] private CustomerStates currentCustomerState = CustomerStates.Wandering;
 
     public int WaitTime { get; set; }
 
@@ -62,6 +62,12 @@ public class dj_Customer : MonoBehaviour
         if (Random.Range(0f, 1f) > 0.85 && currentCustomerState == CustomerStates.Wandering)
         {
             currentCustomerState = CustomerStates.Approaching;
+        }
+        if (currentCustomerState == CustomerStates.Leaving && movement.LeftScreen)
+        {
+            currentCustomerState = CustomerStates.Wandering;
+            movement.GetComponent<CircleCollider2D>().enabled = true;
+            movement.LeftScreen = false;
         }
         movement.Execute(currentCustomerState);
         yield return new WaitForSeconds(nextActionTimer);
