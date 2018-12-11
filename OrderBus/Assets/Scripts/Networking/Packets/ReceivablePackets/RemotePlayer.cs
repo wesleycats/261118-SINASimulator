@@ -5,9 +5,4 @@ using UnityEngine;
 public class RemotePlayer : MonoBehaviour {
 
     public long objectId;
-
-    private void OnDestroy()
-    {
-        
-    }
 }

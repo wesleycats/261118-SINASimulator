@@ -6,13 +6,14 @@ public class PlayerManager : MonoBehaviour {
 
     public static PlayerManager instance;
 
-    public GameObject player;
+	[SerializeField]
+    private GameObject player;
 
-    public List<GameObject> playersList;
+	private Dictionary<long, GameObject> playersList = new Dictionary<long, GameObject>();
 
-    private void Start()
+
+	private void Start()
     {
-        playersList = new List<GameObject>();
         instance = this;
     }
 
@@ -22,14 +23,22 @@ public class PlayerManager : MonoBehaviour {
 
         RemotePlayer remotePlayer = playerObject.GetComponent<RemotePlayer>();
 
+		playerObject.transform.position = position;
+
         remotePlayer.objectId = objectId;
 
-        playersList.Add(playerObject);
+        playersList.Add(objectId,playerObject);
 
 	}
 
-    public void RemovePlayer()
+    public void RemovePlayer(long objectId)
     {
-
+		playersList.Remove(objectId);
+		Destroy(playersList[objectId]);
     }
+
+	public GameObject GetPlayer(long objectId)
+	{
+		return playersList[objectId];
+	}
 }
