@@ -21,6 +21,7 @@ public class dj_OrderDisplayer : MonoBehaviour
 
     public void ShowOrder(dj_Customer c)
     {
+		transform.GetChild(0).gameObject.SetActive(true);
         customer = c;
         c.Leaving += ClearOrder;
         int m = Random.Range(1, maxItems);
@@ -48,7 +49,8 @@ public class dj_OrderDisplayer : MonoBehaviour
 
     public void ClearOrder()
     {
-        customer.Leaving -= ClearOrder;
+		transform.GetChild(0).gameObject.SetActive(false);
+		customer.Leaving -= ClearOrder;
         for (int i = 0; i < maxItems; i++)
         {
             orders[i].sprite = null;
