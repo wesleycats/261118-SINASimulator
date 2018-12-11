@@ -47,7 +47,7 @@ public class ReceivablePacketManager {
                 break;
 
             case 10:
-               // ChatResult.notify(packet);
+                HandleInput.Notify(packet);
                 break;
         }
     }

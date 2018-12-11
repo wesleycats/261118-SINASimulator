@@ -92,6 +92,8 @@ public class InputManager : MonoBehaviour {
 		{
 			OnInput(inputActions, axisNumber);
 		}
+
+        NetworkManager.instance.ChannelSend(new InputUpdate(inputActions, axisNumber));
 	}
 
 	private void DebugInput(InputActions inputActions, float axisNumber)
