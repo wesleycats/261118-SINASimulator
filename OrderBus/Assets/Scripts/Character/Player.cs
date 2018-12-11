@@ -7,10 +7,8 @@ public class Player : MonoBehaviour
 {
 	public List<Item> equipedItems = new List<Item>();
 
-	private List<GameObject> items = new List<GameObject>();
 	private PlayerInventory inventory;
 	private int equipItemIndex = 0;
-	private bool test = false;
 
 	public Item GetEquipedItem{
 		get {
