@@ -8,6 +8,7 @@ public class InputManager : MonoBehaviour {
 	public Action<InputActions, float> OnInput;
 
 	public bool movement;
+	public bool menu;
 
 	private void Start()
 	{
@@ -49,7 +50,7 @@ public class InputManager : MonoBehaviour {
 				}
 			}
 		}
-		else
+		else if (menu)
 		{
 			if (Input.GetButtonDown("Vertical"))
 			{
@@ -75,7 +76,6 @@ public class InputManager : MonoBehaviour {
 				}
 			}
 		}
-		
 
 		if (Input.GetButton("Pause"))
 		{

@@ -5,10 +5,11 @@ using UnityEngine;
 public class Interact : MonoBehaviour {
 
 	[SerializeField] InputManager inputScript;
-    private BoxCollider2D boxCollider2D;
 
+    private BoxCollider2D boxCollider2D;
     private ContactFilter2D filter;
-    private float distance;
+	private GameObject closestGameObject = null;
+	private float distance;
 
     // Use this for initialization
     void Start () {
@@ -36,7 +37,7 @@ public class Interact : MonoBehaviour {
         numHits += boxCollider2D.Cast(new Vector2(0, 1), filter, raycastHits, distance);
         numHits += boxCollider2D.Cast(new Vector2(0, -1), filter, raycastHits, distance);
 
-        GameObject closestGameObject = null;
+        closestGameObject = null;
 
         for (int i = 0; i < numHits; i++)
         {
@@ -59,4 +60,6 @@ public class Interact : MonoBehaviour {
             closestGameObject.GetComponent<Interactable>().Use(this.GetComponent<Player>());
         }
     }
+	
+	public GameObject ClosestGameObject { get { return closestGameObject; } }
 }

@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class Workstation : Interactable {
 
+	public ProductionTime production;
 	public List<Item> items = new List<Item>();
-	public enum WorkstationType { coffeeMachine, kitchen, trunk, trash }
+	public enum WorkstationType { CoffeeMachine, Kitchen, Trunk, Trash }
 	public WorkstationType workStationType;
+	public float productionTime;
 
+	Player playerClass;
 	WorkstationManager wsManager;
 	StationInventory inventory;
 
 	private void Awake()
 	{
 		wsManager = FindObjectOfType<WorkstationManager>();
-		if (workStationType != WorkstationType.trash) inventory = transform.GetChild(0).GetComponent<StationInventory>();
+		playerClass = FindObjectOfType<Player>();
+		if (workStationType != WorkstationType.Trash) inventory = transform.GetChild(0).GetComponent<StationInventory>();
 	}
 
 	private void Start()
@@ -24,8 +28,16 @@ public class Workstation : Interactable {
 
 	public override void Use(Player player)
 	{
-		if (workStationType != WorkstationType.trash)
+		if (workStationType != WorkstationType.Trash)
 		{
+			if (player.equipedItems[0].GetItem != ItemType.None)
+			{
+				if (workStationType != WorkstationType.CoffeeMachine) return;
+
+				if (!inventory.gameObject.activeSelf) DisplayInventory(true);
+				return;
+			}
+
 			if (!inventory.gameObject.activeSelf) DisplayInventory(true);
 		}
 		else
@@ -43,39 +55,58 @@ public class Workstation : Interactable {
 	{
 		switch (workStationType)
 		{
-			case WorkstationType.coffeeMachine:
+			case WorkstationType.CoffeeMachine:
 
 				for (int i = 0; i < wsManager.coffeeMachine.Count; i++)
 				{
-					items.Add(new Item(wsManager.coffeeMachine[i]));
+					items.Add(new Item(wsManager.coffeeMachine[i], production.productionTimes[0]));
 				}
 
 				break;
-			case WorkstationType.kitchen:
+			case WorkstationType.Kitchen:
 
 				for (int i = 0; i < wsManager.kitchen.Count; i++)
 				{
-					items.Add(new Item(wsManager.coffeeMachine[i]));
+					items.Add(new Item(wsManager.kitchen[i], production.productionTimes[1]));
 				}
 
 				break;
-			case WorkstationType.trunk:
+			case WorkstationType.Trunk:
 
 				for (int i = 0; i < wsManager.trunk.Count; i++)
 				{
-					items.Add(new Item(wsManager.coffeeMachine[i]));
+					items.Add(new Item(wsManager.trunk[i], production.productionTimes[2]));
 				}
 				break;
-			case WorkstationType.trash:
+			case WorkstationType.Trash:
 
 				for (int i = 0; i < wsManager.trashCan.Count; i++)
 				{
-					items.Add(new Item(wsManager.trashCan[i]));
+					items.Add(new Item(wsManager.trashCan[i], production.productionTimes[3]));
 				}
 				break;
 			default:
 				Debug.Log("No workstation type was given");
 			break;
+		}
+	}
+
+	private void InitProductionTime(WorkstationType type)
+	{
+		switch(type)
+		{
+			case WorkstationType.CoffeeMachine:
+				productionTime = production.productionTimes[0];
+				break;
+			case WorkstationType.Kitchen:
+				productionTime = production.productionTimes[1];
+				break;
+			case WorkstationType.Trunk:
+				productionTime = production.productionTimes[2];
+				break;
+			case WorkstationType.Trash:
+				productionTime = production.productionTimes[3];
+				break;
 		}
 	}
 }

@@ -11,21 +11,21 @@ public enum CustomerStates
     Leaving
 }
 
-public class DJ_Customer : MonoBehaviour
+public class Customer : MonoBehaviour
 {
     [Header("How long the customer will execute a movement action before starting the next")]
     [SerializeField] private float nextActionTimer;
-    private DJ_CustomerMovement movement;
-    private CustomerStates currentCustomerState = CustomerStates.Wandering;
+    private CustomerMovement movement;
+    [SerializeField] private CustomerStates currentCustomerState = CustomerStates.Wandering;
 
-    public int WaitTime { get; set; }
+    public float WaitTime { get; set; }
 
     public delegate void LeavingQueue();
     public event LeavingQueue Leaving;
 
     void Start()
     {
-        movement = GetComponent<DJ_CustomerMovement>();
+        movement = GetComponent<CustomerMovement>();
         StartCoroutine("NextAction");
     }
 
@@ -39,7 +39,7 @@ public class DJ_Customer : MonoBehaviour
         StartCoroutine(WaitForOrder(WaitTime));
     }
 
-    IEnumerator WaitForOrder(int seconds)
+    IEnumerator WaitForOrder(float seconds)
     {
         GetComponent<CircleCollider2D>().enabled = false;
         currentCustomerState = CustomerStates.Waiting;
@@ -62,6 +62,12 @@ public class DJ_Customer : MonoBehaviour
         if (Random.Range(0f, 1f) > 0.85 && currentCustomerState == CustomerStates.Wandering)
         {
             currentCustomerState = CustomerStates.Approaching;
+        }
+        if (currentCustomerState == CustomerStates.Leaving && movement.LeftScreen)
+        {
+            currentCustomerState = CustomerStates.Wandering;
+            movement.GetComponent<CircleCollider2D>().enabled = true;
+            movement.LeftScreen = false;
         }
         movement.Execute(currentCustomerState);
         yield return new WaitForSeconds(nextActionTimer);
