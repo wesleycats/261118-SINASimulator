@@ -13,7 +13,6 @@ public class PlayerInformation {
 
         Debug.Log("Player joined");
 
-        //TODO: Manage PlayerInformation
-        //UnityMainThreadDispatcher.Instance().Enqueue(() => UnityEngine.XR.WSA.WorldManager.instance.UpdateObject(objectId, classId, posX, posY, posZ));
+		PlayerManager.instance.InstansiatePlayer(new Vector3(posX,posY), objectId);
     }
 }
