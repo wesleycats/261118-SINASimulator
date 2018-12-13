@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class DJ_Queue : MonoBehaviour
+public class Queue : MonoBehaviour
 {
     public delegate void NewCustomer();
     public event NewCustomer NextCustomer;
@@ -33,19 +33,22 @@ public class DJ_Queue : MonoBehaviour
 
     void RemoveCustomer()
     {
-        customers.Remove(customers[0]);
+        if (customers.ElementAtOrDefault(0) != null)
+        {
+            customers.Remove(customers[0]);
+        }
         StartCoroutine("SetCustomerPositions");
     }
 
     IEnumerator SetCustomerPositions()
     {
-        DJ_CustomerMovement m;
+        CustomerMovement m;
         int l = customers.Count;
         for (int i = 0; i < l; i++)
         {
-            m = customers[i].GetComponent<DJ_CustomerMovement>();
+            m = customers[i].GetComponent<CustomerMovement>();
             m.QueuePosition = i;
-            m.TargetPosition = new Vector2((i + offset) * side.GetHashCode() * 0.2f, 0);
+            m.TargetPosition = new Vector2(transform.position.x - ((transform.localScale.x/4 - i * offset) * side.GetHashCode()), 0);
         }
         if (NextCustomer != null)
         {
@@ -59,19 +62,19 @@ public class DJ_Queue : MonoBehaviour
         GameObject o = other.gameObject;
         if (o.tag == "Customer" && !customers.Contains(o))
         {
-            DJ_Customer c = o.GetComponent<DJ_Customer>();
-            DJ_CustomerMovement m = o.GetComponent<DJ_CustomerMovement>();
+            Customer c = o.GetComponent<Customer>();
+            CustomerMovement m = o.GetComponent<CustomerMovement>();
             if (customers.Count < maxLength)
             {
                 c.Leaving += RemoveCustomer;
                 customers.Add(o);
-                m.EndOfQueue = new Vector2(offset * side.GetHashCode() * 0.2f, 0);
+                m.EndOfQueue = new Vector2(transform.position.x - ((transform.localScale.x / 4) * side.GetHashCode()), 0);
                 StartCoroutine("SetCustomerPositions");
                 c.SetState(CustomerStates.Queueing);
             }
             else
             {             
-                m.TargetPosition = new Vector2((1.2f + offset) * side.GetHashCode(), 0);
+                m.TargetPosition = new Vector2(12f + (offset * side.GetHashCode()), 0);
                 m.StopAllCoroutines();
                 c.SetState(CustomerStates.Wandering);
             }

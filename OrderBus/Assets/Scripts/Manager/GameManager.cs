@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour {
 
 	public void InitDay(int day)
 	{
-		Debug.Log("It's day " + day);
 		switch (day)
 		{
 			case 1:

@@ -16,14 +16,14 @@ public class PlayerInventory : MonoBehaviour {
 
 	public void SetEquipedItem(Item item, int index)
 	{
-		if (item.GetItem == ItemType.none)
+		equipedItems.Clear();
+		equipedItems.Add(item);
+		if (item.GetItem == ItemType.None)
 		{
-			equipedItems.Clear();
 			DisplayInventory(false);
 		}
 		else
 		{
-			equipedItems.Add(item);
 			DisplayInventory(true);
 		}
 	}
@@ -36,7 +36,7 @@ public class PlayerInventory : MonoBehaviour {
 			{
 				switch (equipedItems[i].GetItem)
 				{
-					case ItemType.coffee:
+					case ItemType.Coffee:
 						for (int j = 0; j < transform.childCount; j++)
 						{
 							if (transform.GetChild(j).name == "Coffee")
@@ -49,7 +49,7 @@ public class PlayerInventory : MonoBehaviour {
 							}
 						}
 						break;
-					case ItemType.choco:
+					case ItemType.Choco:
 						for (int j = 0; j < transform.childCount; j++)
 						{
 							if (transform.GetChild(j).name == "Choco")
@@ -62,7 +62,7 @@ public class PlayerInventory : MonoBehaviour {
 							}
 						}
 						break;
-					case ItemType.tea:
+					case ItemType.Tea:
 						for (int j = 0; j < transform.childCount; j++)
 						{
 							if (transform.GetChild(j).name == "Tea")
@@ -75,7 +75,7 @@ public class PlayerInventory : MonoBehaviour {
 							}
 						}
 						break;
-					case ItemType.sandwich:
+					case ItemType.Sandwich:
 						for (int j = 0; j < transform.childCount; j++)
 						{
 							if (transform.GetChild(j).name == "Sandwich")
@@ -88,7 +88,7 @@ public class PlayerInventory : MonoBehaviour {
 							}
 						}
 						break;
-					case ItemType.cookie:
+					case ItemType.Cookie:
 						for (int j = 0; j < transform.childCount; j++)
 						{
 							if (transform.GetChild(j).name == "Cookie")
@@ -101,7 +101,7 @@ public class PlayerInventory : MonoBehaviour {
 							}
 						}
 						break;
-					case ItemType.pie:
+					case ItemType.Pie:
 						for (int j = 0; j < transform.childCount; j++)
 						{
 							if (transform.GetChild(j).name == "Pie")
@@ -114,7 +114,7 @@ public class PlayerInventory : MonoBehaviour {
 							}
 						}
 						break;
-					case ItemType.blanket:
+					case ItemType.Blanket:
 						for (int j = 0; j < transform.childCount; j++)
 						{
 							if (transform.GetChild(j).name == "Blanket")
@@ -127,7 +127,7 @@ public class PlayerInventory : MonoBehaviour {
 							}
 						}
 						break;
-					case ItemType.diaper:
+					case ItemType.Diaper:
 						for (int j = 0; j < transform.childCount; j++)
 						{
 							if (transform.GetChild(j).name == "Diaper")
@@ -140,7 +140,7 @@ public class PlayerInventory : MonoBehaviour {
 							}
 						}
 						break;
-					case ItemType.poncho:
+					case ItemType.Poncho:
 						for (int j = 0; j < transform.childCount; j++)
 						{
 							if (transform.GetChild(j).name == "Poncho")

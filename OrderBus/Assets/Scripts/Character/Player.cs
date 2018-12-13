@@ -8,17 +8,30 @@ public class Player : MonoBehaviour
 	public List<Item> equipedItems = new List<Item>();
 
 	private PlayerInventory inventory;
-	private int equipItemIndex = 0;
+	private int equipItemIndex;
 
-	public Item GetEquipedItem{
+	/*public Item GetEquipedItem{
 		get {
 			return equipedItems[equipItemIndex];
 		}		
+	}*/
+
+	private void Start()
+	{
+		equipedItems.Add(new Item(ItemType.None, 0));
 	}
 
 	private void Awake()
 	{
 		inventory = transform.GetChild(0).GetComponent<PlayerInventory>();
+	}
+
+	private void Update()
+	{
+		if (inventory.isActiveAndEnabled)
+		{
+			equipedItems = inventory.equipedItems;
+		}
 	}
 
 	public void SetEquipedItem(Item item, int index)
