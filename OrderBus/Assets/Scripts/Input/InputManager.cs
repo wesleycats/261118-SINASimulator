@@ -16,7 +16,7 @@ public class InputManager : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update()
+	public virtual void Update()
 	{
 		if (Input.GetButtonDown("Use"))
 		{
@@ -92,8 +92,6 @@ public class InputManager : MonoBehaviour {
 		{
 			OnInput(inputActions, axisNumber);
 		}
-
-        NetworkManager.instance.ChannelSend(new InputUpdate(inputActions, axisNumber));
 	}
 
 	private void DebugInput(InputActions inputActions, float axisNumber)
