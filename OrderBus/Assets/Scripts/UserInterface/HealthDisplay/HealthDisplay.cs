@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class HealthDisplay : MonoBehaviour {
 
+    public static HealthDisplay instance;
+
     private int lives;
     private int maxLives;
 
@@ -19,6 +21,8 @@ public class HealthDisplay : MonoBehaviour {
 
     void Start()
     {
+        instance = this;
+
         maxLives = transform.childCount;
         lives = maxLives;
         AcquireImages();

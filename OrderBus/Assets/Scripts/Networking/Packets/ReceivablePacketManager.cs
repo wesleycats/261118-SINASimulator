@@ -39,7 +39,7 @@ public class ReceivablePacketManager {
                 break;
 
             case 8:
-               // Logout.notify(packet);
+                DifficultyChange.Notify(packet);
                 break;
 
             case 9:
