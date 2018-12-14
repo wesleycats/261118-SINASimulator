@@ -605,6 +605,7 @@ MonoBehaviour:
   playerInput: {fileID: 2030201798}
   speed: 10
   friction: 1
+  networkSendRate: 20
 --- !u!114 &519078039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -824,6 +825,8 @@ GameObject:
   - component: {fileID: 844189811}
   - component: {fileID: 844189813}
   - component: {fileID: 844189814}
+  - component: {fileID: 844189815}
+  - component: {fileID: 844189816}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -878,6 +881,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 524769c25d9914c47964f6499d332722, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &844189815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 844189810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b7239be8f6532b48808cdc010cb4ce3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1200197185504668, guid: 31a7dba4bd224b141bc78d6b4280aa76, type: 2}
+--- !u!114 &844189816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 844189810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3870800a1baf8e844b9f2c610b7d1f89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &868938338 stripped

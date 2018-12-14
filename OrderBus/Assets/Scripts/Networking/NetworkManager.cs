@@ -17,7 +17,7 @@ public class NetworkManager : MonoBehaviour
     public static NetworkManager instance;
 
     // Connection settings.
-    string serverIP = "10.120.21.166";
+    string serverIP = "127.0.0.1";
     int serverPort = 880;
     int connectionTimeOut = 5000;
 

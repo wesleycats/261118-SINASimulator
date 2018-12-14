@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class LocationUpdate : SendablePacket {
 
-    public LocationUpdate(float posX, float posY, float posZ, float time) {
+    public LocationUpdate(float posX, float posY, float posZ, float time)
+    {
 
-        WriteShort(8); // Packet id.
+        WriteShort(9); // Packet id.
         WriteDouble(posX); // TODO: WriteFloat
         WriteDouble(posY); // TODO: WriteFloat
         WriteDouble(posZ); // TODO: WriteFloat

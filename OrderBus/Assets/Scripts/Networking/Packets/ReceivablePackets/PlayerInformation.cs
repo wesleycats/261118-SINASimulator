@@ -7,12 +7,12 @@ public class PlayerInformation {
     public static void Notify(ReceivablePacket packet) {
 
         long objectId = packet.ReadLong();
-        float posX = packet.ReadFloat();
-        float posY = packet.ReadFloat();
-        float posZ = packet.ReadFloat();
+        float posX = (float) packet.ReadDouble();
+        float posY = (float) packet.ReadDouble();
+        float posZ = (float) packet.ReadDouble();
 
         Debug.Log("Player joined");
 
-		PlayerManager.instance.InstansiatePlayer(new Vector3(posX,posY), objectId);
+        UnityMainThreadDispatcher.Instance().Enqueue(() => PlayerManager.instance.InstansiatePlayer(new Vector3(posX,posY, posZ), objectId));
     }
 }

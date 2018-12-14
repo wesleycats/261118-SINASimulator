@@ -2,43 +2,63 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour {
+public class PlayerManager : MonoBehaviour
+{
 
     public static PlayerManager instance;
 
-	[SerializeField]
+    [SerializeField]
     private GameObject player;
 
-	private Dictionary<long, GameObject> playersList = new Dictionary<long, GameObject>();
+    private Dictionary<long, GameObject> playersList = new Dictionary<long, GameObject>();
 
 
-	private void Start()
+    private void Start()
     {
         instance = this;
     }
 
-    public void InstansiatePlayer (Vector3 position, long objectId) {
+    public void InstansiatePlayer(Vector3 position, long objectId)
+    {
 
-        GameObject playerObject = Instantiate(player);
+        GameObject playerObject = Instantiate(player, position, player.transform.rotation);
 
-        RemotePlayer remotePlayer = playerObject.GetComponent<RemotePlayer>();
+        playerObject.GetComponent<WorldObject>().objectId = objectId;
 
-		playerObject.transform.position = position;
+        playersList.Add(objectId, playerObject);
 
-        remotePlayer.objectId = objectId;
+        Debug.Log("Test spawn player");
 
-        playersList.Add(objectId,playerObject);
-
-	}
+    }
 
     public void RemovePlayer(long objectId)
     {
-		playersList.Remove(objectId);
-		Destroy(playersList[objectId]);
+        playersList.Remove(objectId);
+        Destroy(playersList[objectId]);
     }
 
-	public GameObject GetPlayer(long objectId)
-	{
-		return playersList[objectId];
-	}
+    public GameObject GetPlayer(long objectId)
+    {
+        return playersList[objectId];
+    }
+
+    public void MovePlayer(long objectId, float posX, float posY, float posZ, float time)
+    {
+        GameObject gameObject = GetPlayer(objectId);
+
+        if (gameObject == null) return;
+
+        Vector3 toLoc = new Vector3(posX, posY, posZ);
+
+        if (Vector3.Distance(gameObject.transform.position, toLoc) > 10)
+        {
+
+            gameObject.transform.position = toLoc;
+
+        }
+        else
+        {
+            gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, toLoc, 1);
+        }
+    }
 }

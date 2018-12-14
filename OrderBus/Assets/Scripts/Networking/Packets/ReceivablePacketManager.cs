@@ -43,11 +43,7 @@ public class ReceivablePacketManager {
                 break;
 
             case 9:
-                MoveToLocation.Notify(packet);
-                break;
-
-            case 10:
-                HandleInput.Notify(packet);
+                HandleLocation.Notify(packet);
                 break;
         }
     }

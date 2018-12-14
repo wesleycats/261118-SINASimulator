@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RemotePlayer : MonoBehaviour {
+public class WorldObject : MonoBehaviour {
 
     public long objectId;
 }
