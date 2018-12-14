@@ -6,7 +6,7 @@ using UnityEngine;
 public class ProductionTime : ScriptableObject {
 
 	[Header("What are the production times of the items?")]
-	[Tooltip("index 0 = coffee machine, 1 = kitchen, 2 = trunk, 3 = trash")]
+	[Tooltip("[0]=coffee machine, [1]=kitchen, [2]=trunk, [3]=trash")]
 	public float[] productionTimes = new float[4];
 	
 }
