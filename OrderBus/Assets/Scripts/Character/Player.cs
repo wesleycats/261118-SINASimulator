@@ -5,30 +5,48 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+<<<<<<< HEAD
 	[SerializeField] private int itemLimit = 1;
 
     public static Player instance;
 
+=======
+>>>>>>> Develop
 	public List<Item> equipedItems = new List<Item>();
 
-	private List<GameObject> items = new List<GameObject>();
 	private PlayerInventory inventory;
-	private int equipItemIndex = 0;
-	private bool test = false;
+	private int equipItemIndex;
 
+<<<<<<< HEAD
     [HideInInspector]
     public long objectId;
 
 	public Item GetEquipedItem{
+=======
+	/*public Item GetEquipedItem{
+>>>>>>> Develop
 		get {
 			return equipedItems[equipItemIndex];
 		}		
+	}*/
+
+	private void Start()
+	{
+		equipedItems.Add(new Item(ItemType.None, 0));
 	}
 
 	private void Awake()
 	{
         instance = this;
         inventory = transform.GetChild(0).GetComponent<PlayerInventory>();
+	}
+
+	private void Update()
+	{
+		if (inventory.isActiveAndEnabled)
+		{
+			equipedItems = inventory.equipedItems;
+		}
 	}
 
 	public void SetEquipedItem(Item item, int index)

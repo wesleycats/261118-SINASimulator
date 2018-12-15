@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Data : MonoBehaviour {
 
-    [SerializeField] private int lives;
+    [SerializeField] private int currentLives;
 
     public HealthDisplay health;
 	public LoseCondition loseCondition;
@@ -13,17 +13,17 @@ public class Data : MonoBehaviour {
 	{
 		get
 		{
-			return lives;
+			return currentLives;
 		}
 	}
 
 	void Update()
 	{
-		lives = health.Lives;
+		currentLives = health.Lives;
 
-		if (lives < 1)
+		if (currentLives < 1)
 		{
-			health.SetLives(lives);
+			health.SetLives(currentLives);
 			loseCondition.Lose();
 		}
 	}

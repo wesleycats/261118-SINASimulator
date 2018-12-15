@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class TimeLeft : MonoBehaviour
 {
-	public GameObject winPanel;
+	public LevelData levelData;
+	public GameObject winMenu;
+	public GameObject endMenu;
 
 	[Tooltip("Time is in seconds")]
 	[SerializeField] private float timeLimit = 120f;
@@ -21,9 +23,8 @@ public class TimeLeft : MonoBehaviour
     {
         // Find the scripts
         timeDisplay = GameObject.FindObjectOfType<TimeDisplay>();
-
         timeLeft = timeLimit;
-		winPanel.SetActive(false);
+		winMenu.SetActive(false);
 	}
 
 	void FixedUpdate()
@@ -32,9 +33,7 @@ public class TimeLeft : MonoBehaviour
         {
             if (timeLeft < 0)
             {
-				winPanel.SetActive(true);
-                isTimeUp = true;
-                Time.timeScale = 0;
+				Win();
                 return;
             }
 			
@@ -50,4 +49,17 @@ public class TimeLeft : MonoBehaviour
             }
         }
     }
+
+	private void Win()
+	{
+		if (levelData.currentDay >= 7)
+		{
+			endMenu.SetActive(true);
+		} else
+		{
+			winMenu.SetActive(true);
+		}
+		isTimeUp = true;
+		Time.timeScale = 0;
+	}
 }
