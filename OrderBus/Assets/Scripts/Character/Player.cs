@@ -15,12 +15,6 @@ public class Player : MonoBehaviour {
     private PlayerInventory inventory;
     private int equipItemIndex;
 
-    /*public Item GetEquipedItem{
-		get {
-			return equipedItems[equipItemIndex];
-		}		
-	}*/
-
     private void Start()
 	{
 		equipedItems.Add(new Item(ItemType.None, 0));
