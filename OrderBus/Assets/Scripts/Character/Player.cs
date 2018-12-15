@@ -28,7 +28,6 @@ public class Player : MonoBehaviour {
 
 	private void Update()
 	{
-        if (inventory == null) return;
 		if (inventory.isActiveAndEnabled)
 		{
 			equipedItems = inventory.equipedItems;
