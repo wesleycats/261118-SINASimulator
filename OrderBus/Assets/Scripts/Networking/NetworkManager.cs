@@ -29,9 +29,6 @@ public class NetworkManager : MonoBehaviour
     Socket socket;
     bool socketConnected = false;
 
-    // Used for kicked to login screen message.
-    public bool kicked = false;
-
     private void Start()
     {
         instance = this;
@@ -61,11 +58,6 @@ public class NetworkManager : MonoBehaviour
         }
         socketConnected = false;
         readThreadStarted = false;
-
-        // Clear stored variables.
-        // PlayerManager.instance.accountName = null;
-        // PlayerManager.instance.characterList = null;
-        // PlayerManager.instance.selectedCharacterData = null;
     }
 
     // Best to call this only once per login attempt.

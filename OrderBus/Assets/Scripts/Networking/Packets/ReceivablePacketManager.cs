@@ -45,6 +45,10 @@ public class ReceivablePacketManager {
             case 9:
                 HandleLocation.Notify(packet);
                 break;
+
+            case 10:
+                RemovePlayer.Notify(packet);
+                break;
         }
     }
 }

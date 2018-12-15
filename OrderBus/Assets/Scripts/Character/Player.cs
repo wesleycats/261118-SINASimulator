@@ -3,34 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Player : MonoBehaviour
-{
-<<<<<<< HEAD
-	[SerializeField] private int itemLimit = 1;
+public class Player : MonoBehaviour {
 
     public static Player instance;
 
-=======
->>>>>>> Develop
-	public List<Item> equipedItems = new List<Item>();
-
-	private PlayerInventory inventory;
-	private int equipItemIndex;
-
-<<<<<<< HEAD
     [HideInInspector]
     public long objectId;
 
-	public Item GetEquipedItem{
-=======
-	/*public Item GetEquipedItem{
->>>>>>> Develop
+    public List<Item> equipedItems = new List<Item>();
+
+    private PlayerInventory inventory;
+    private int equipItemIndex;
+
+    /*public Item GetEquipedItem{
 		get {
 			return equipedItems[equipItemIndex];
 		}		
 	}*/
 
-	private void Start()
+    private void Start()
 	{
 		equipedItems.Add(new Item(ItemType.None, 0));
 	}
@@ -43,6 +34,7 @@ public class Player : MonoBehaviour
 
 	private void Update()
 	{
+        if (inventory == null) return;
 		if (inventory.isActiveAndEnabled)
 		{
 			equipedItems = inventory.equipedItems;

@@ -33,8 +33,8 @@ public class PlayerManager : MonoBehaviour
 
     public void RemovePlayer(long objectId)
     {
-        playersList.Remove(objectId);
         Destroy(playersList[objectId]);
+        playersList.Remove(objectId);
     }
 
     public GameObject GetPlayer(long objectId)
