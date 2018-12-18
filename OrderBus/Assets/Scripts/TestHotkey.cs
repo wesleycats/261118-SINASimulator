@@ -21,4 +21,15 @@ public class TestHotkey : MonoBehaviour {
 			data.health.SetLives(data.health.Lives-1);
 		}
 	}
+
+	static bool WantsToQuit()
+	{
+		return false;
+	}
+
+	[RuntimeInitializeOnLoadMethod]
+	static void RunOnStart()
+	{
+		Application.wantsToQuit += WantsToQuit;
+	}
 }

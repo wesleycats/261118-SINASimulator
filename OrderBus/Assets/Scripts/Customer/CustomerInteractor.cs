@@ -26,6 +26,7 @@ public class CustomerInteractor : Interactable
         }
         else
         {
+			if (player.equipedItems[0].GetItem == ItemType.None) return;
 			displayer.SendAway(false);
 			data.DecreaseHealth();
 		}

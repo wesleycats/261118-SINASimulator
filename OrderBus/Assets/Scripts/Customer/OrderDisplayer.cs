@@ -53,6 +53,7 @@ public class OrderDisplayer : MonoBehaviour
                     }
                 }
             }
+			Debug.Log(it.GetItem);
             orders[i].sprite = Resources.Load<Sprite>(it.GetItem.ToString());
             t += it.GetTime;
             orderList.Add(it);

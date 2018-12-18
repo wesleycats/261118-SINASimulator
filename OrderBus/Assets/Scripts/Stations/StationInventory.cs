@@ -45,6 +45,11 @@ public class StationInventory : MonoBehaviour {
 		playerMovement.enabled = true;
 		input.movement = true;
 		input.menu = false;
+
+		for (int i = 0; i < transform.childCount; i++)
+		{
+			transform.GetChild(i).transform.GetChild(0).gameObject.SetActive(false);
+		}
 	}
 
 	private void MenuControl(InputActions inputAction, float axisAmount)
