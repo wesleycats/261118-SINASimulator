@@ -36,6 +36,7 @@ public class StationInventory : MonoBehaviour {
 		playerMovement.enabled = false;
 		input.movement = false;
 		input.menu = true;
+		transform.GetChild(index).transform.GetChild(0).gameObject.SetActive(true);
 	}
 
 	private void OnDisable()
@@ -59,8 +60,25 @@ public class StationInventory : MonoBehaviour {
 		}
 
 		if (!input.menu) return;
-
+		
 		if (inputAction == InputActions.Up)
+		{
+			index -= 1;
+
+			if (index < 0)
+			{
+				index = transform.childCount -1;
+			}
+
+			for (int i = 0; i < transform.childCount; i++)
+			{
+				transform.GetChild(i).transform.GetChild(0).gameObject.SetActive(false);
+			}
+
+			transform.GetChild(index).transform.GetChild(0).gameObject.SetActive(true);
+		}
+
+		if (inputAction == InputActions.Down)
 		{
 			index += 1;
 
@@ -69,19 +87,12 @@ public class StationInventory : MonoBehaviour {
 				index = 0;
 			}
 
-			Debug.Log("Current Product: " + items[index].GetItem);
-		}
-
-		if (inputAction == InputActions.Down)
-		{
-			index -= 1;
-
-			if (index < 0)
+			for (int i = 0; i < transform.childCount; i++)
 			{
-				index = transform.childCount - 1;
+				transform.GetChild(i).transform.GetChild(0).gameObject.SetActive(false);
 			}
 
-			Debug.Log("Current Product: " + items[index].GetItem);
+			transform.GetChild(index).transform.GetChild(0).gameObject.SetActive(true);
 		}
 	}
 
