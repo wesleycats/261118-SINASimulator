@@ -533,7 +533,7 @@ MonoBehaviour:
   levelData: {fileID: 11400000, guid: a4df797c59f6df84bbddd710f2a0f3d1, type: 2}
   winMenu: {fileID: 1525653915}
   endMenu: {fileID: 673295540}
-  timeLimit: 30
+  timeLimit: 120
   timeLeft: 0
 --- !u!4 &156034893
 Transform:
