@@ -16,15 +16,16 @@ public class Customer : MonoBehaviour
     [Header("How long the customer will execute a movement action before starting the next")]
     [SerializeField] private float nextActionTimer;
     private CustomerMovement movement;
-    [SerializeField] private CustomerStates currentCustomerState = CustomerStates.Wandering;
+    [SerializeField] private CustomerStates currentCustomerState;
 
     public float WaitTime { get; set; }
 
     public delegate void LeavingQueue();
     public event LeavingQueue Leaving;
 
-    void Start()
+    void Awake()
     {
+        currentCustomerState = CustomerStates.Wandering;
         movement = GetComponent<CustomerMovement>();
         StartCoroutine("NextAction");
     }
@@ -48,8 +49,9 @@ public class Customer : MonoBehaviour
         yield return null;
     }
 
-    void Leave()
+    public void Leave()
     {
+        StopCoroutine("WaitForOrder");
         currentCustomerState = CustomerStates.Leaving;
         if (Leaving != null)
         {

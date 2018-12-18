@@ -8,11 +8,7 @@ public class Queue : MonoBehaviour
     public delegate void NewCustomer();
     public event NewCustomer NextCustomer;
 
-    private enum Side
-    {
-        Left = -1,
-        Right = 1
-    }
+    public static List<Item> ItemList;
 
     [Header("On which side of the bus is the queue?")]
     [SerializeField] private Side side;
@@ -20,7 +16,19 @@ public class Queue : MonoBehaviour
     [SerializeField] private float offset = 0.2f;
     [Header("Maximum length of the queue")]
     [SerializeField] private int maxLength = 5;
-    private List<GameObject> customers = new List<GameObject>();
+    private List<GameObject> customers;
+
+    private enum Side
+    {
+        Left = -1,
+        Right = 1
+    }
+
+    void Awake()
+    {
+        ItemList = new List<Item>();
+        customers = new List<GameObject>();
+    }
 
     public GameObject GetCustomer()
     {
@@ -37,7 +45,7 @@ public class Queue : MonoBehaviour
         {
             customers.Remove(customers[0]);
         }
-        StartCoroutine("SetCustomerPositions");
+        StartCoroutine(SetCustomerPositions());
     }
 
     IEnumerator SetCustomerPositions()

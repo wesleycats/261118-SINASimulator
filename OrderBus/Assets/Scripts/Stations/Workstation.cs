@@ -24,7 +24,17 @@ public class Workstation : Interactable {
 	private void Start()
 	{
 		InitItemList();
-	}
+        if (workStationType != WorkstationType.Trash)
+        {
+            for (int i = 0; i < items.Count; i++)
+            {
+                if (!Queue.ItemList.Contains(items[i]))
+                {
+                    Queue.ItemList.Add(items[i]);
+                }
+            }
+        }
+    }
 
 	public override void Use(Player player)
 	{

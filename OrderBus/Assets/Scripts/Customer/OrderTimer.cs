@@ -36,7 +36,7 @@ public class OrderTimer : MonoBehaviour
         {
             print("the customer is angry and walks away");
             ClearTime();
-            //displayer.SendAway(false);
+            displayer.SendAway(false);
         }
         yield return null;
     }
