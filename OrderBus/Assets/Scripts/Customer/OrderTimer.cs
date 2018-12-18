@@ -33,8 +33,7 @@ public class OrderTimer : MonoBehaviour
             StartCoroutine(CountDown(s));
         }
         else
-        {
-            print("the customer is angry and walks away");
+		{
             ClearTime();
             displayer.SendAway(false);
         }

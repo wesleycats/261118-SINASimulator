@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class CustomerInteractor : Interactable
 {
+	public Data data;
     Player playerClass;
     [SerializeField] private OrderDisplayer displayer;
-    private List<Item> orders;
+    [SerializeField] private List<Item> orders;
 
-    void Awake()
+	void Awake()
+	{
+		playerClass = FindObjectOfType<Player>();
+	}
+	
+	public override void Use(Player player)
     {
-        playerClass = FindObjectOfType<Player>();
-        orders = displayer.orderList;
-    }
-
-    public override void Use(Player player)
-    {
+		orders = displayer.orderList;
         Item it = player.equipedItems[0];
         if (orders.Contains(it))
         {
@@ -25,13 +26,8 @@ public class CustomerInteractor : Interactable
         }
         else
         {
-
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+			displayer.SendAway(false);
+			data.DecreaseHealth();
+		}
     }
 }

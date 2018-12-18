@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentDay: 1
   workstation:
-  - {fileID: 1219701338744638, guid: 26eca9883d5060c4db2dcb510bcd6a8d, type: 2}
-  - {fileID: 1219701338744638, guid: 26eca9883d5060c4db2dcb510bcd6a8d, type: 2}
-  - {fileID: 1219701338744638, guid: 26eca9883d5060c4db2dcb510bcd6a8d, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   levelDifficulty: 00000000000000000100000001000000010000000200000002000000
   customersPerDay: 05000000060000000700000008000000090000000a0000000c000000

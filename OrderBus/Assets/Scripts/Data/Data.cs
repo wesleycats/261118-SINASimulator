@@ -5,9 +5,11 @@ using UnityEngine;
 public class Data : MonoBehaviour {
 
     [SerializeField] private int currentLives;
+	[SerializeField] private float orderTimeMultiplier = 1;
 
     public HealthDisplay health;
 	public LoseCondition loseCondition;
+
 
 	public int Lives
 	{
@@ -27,4 +29,11 @@ public class Data : MonoBehaviour {
 			loseCondition.Lose();
 		}
 	}
+
+	public void DecreaseHealth()
+	{
+		health.SetLives(health.Lives - 1);
+	}
+
+	public float OrderTimeMultiplier { get { return orderTimeMultiplier; } }
 }

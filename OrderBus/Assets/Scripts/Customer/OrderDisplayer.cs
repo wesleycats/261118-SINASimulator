@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class OrderDisplayer : MonoBehaviour
 {
+	public Data data;
+
     [Header("An array of sprite renderers for the order icons")]
     [SerializeField] private SpriteRenderer[] orders;
     [Header("The maximum amount of items a customer can order")]
@@ -15,7 +17,7 @@ public class OrderDisplayer : MonoBehaviour
     [SerializeField] private LevelData lvlData;
     private List<Item> itemList;
     private Customer customer;
-    public List<Item> orderList;
+    public List<Item> orderList = new List<Item>();
 
     // Use this for initialization
     void Start()
@@ -32,13 +34,12 @@ public class OrderDisplayer : MonoBehaviour
 
     public void ShowOrder(Customer c)
     {
-        orderList = new List<Item>();
         transform.GetChild(0).gameObject.SetActive(true);
         customer = c;
         c.Leaving += ClearOrder;
         int m = Random.Range(1, maxItems);
         int l = itemList.Count;
-        float t = 2 * m;
+        float t = 2 * m * data.OrderTimeMultiplier;
         for (int i = 0; i < m; i++)
         {
             Item it = itemList[Random.Range(0, l)];
@@ -63,7 +64,6 @@ public class OrderDisplayer : MonoBehaviour
         timer.SetTime(t);
         c.WaitTime = t;
         c.PlaceOrder();
-        print(m);
     }
 
     public void RefreshOrder()
@@ -101,6 +101,8 @@ public class OrderDisplayer : MonoBehaviour
         {
             health.SetLives(health.Lives - 1);
         }
-        customer.Leave();
+
+		ClearOrder();
+		customer.Leave();
     }
 }
